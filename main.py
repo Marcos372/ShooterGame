@@ -1,10 +1,21 @@
-import pygame
+from code.Game import Game
 
-pygame.init()
-janela = pygame.display.set_mode(size = (800, 600)) #cria a janela e seu tamanho
+#Criando classe da nave
+class Nave:
+    def __init__(self, age:int, name:str, atk:int, defense:int): # dizendo os parâmetros e seus tipos
+        self.age = age # mostrando que "age" vai receber o valor do parametro age e que deve
+        self.name = name
+        self.atk = atk
+        self.defense = defense
 
-while True:
-    for event in pygame.event.get(): #capturando todos os eventos
-        if event.type == pygame.QUIT:
-            pygame.quit() #fechar janela
-            quit() #fecha o pygame
+#herança
+class Fuga (Nave): #Mostra herança quando uma classe é parâmetro da outra
+    def __init__(self, age:int, name:str, atk:int, defense:int):
+        super().__init__(age, name, atk, defense) # "Super" referencia a classe pai
+
+#instanciando
+t45 = Fuga(10,"Modelo T45", 70, 30)
+print(t45.defense)
+
+game = Game()
+game.run()
